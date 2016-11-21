@@ -37,17 +37,17 @@ public class ApiAlertTopologyMain {
 
 		builder.setBolt("ApiAlertBoltLogParse", new ApiAlertBoltLogParse(), 12)
 			.shuffleGrouping("ApiAlertSpoutLog");
-		/*
+		
 		builder.setBolt("ApiAlertBoltLogGroup", new ApiAlertBoltLogGroup(), 12)
-			.fieldsGrouping("ApiAlertBoltLogParse","logParse", new Fields("logParse"));
+			.fieldsGrouping("ApiAlertBoltLogParse","logParse", new Fields("apiId"));
 
 		builder.setBolt("ApiAlertBoltAbnormal", new ApiAlertBoltAbnormal(), 12)
-      .fieldsGrouping("ApiAlertBoltLogGroup","groupList", new Fields("groupList"))
+			.fieldsGrouping("ApiAlertBoltLogGroup","groupList", new Fields("groupList"))
 			.fieldsGrouping("ApiAlertBoltConfig","userConfig", new Fields("userConfig"));
 
 		builder.setBolt("ApiAlertBoltAlert", new ApiAlertBoltAlert(), 12)
 			.fieldsGrouping("ApiAlertBoltAbnormal","abnormalList", new Fields("abnormalList"));
-		*/
+		
 		Config conf = new Config();
 		conf.setDebug(true);
 		//conf.setNumWorkers(12);
