@@ -61,10 +61,10 @@ public class ApiAlertTopologyMain {
 		}
 		else {
 	 		conf.setMaxTaskParallelism(1);
-      LocalCluster cluster = new LocalCluster();
+			LocalCluster cluster = new LocalCluster();
 	 		cluster.submitTopology("ApiAlert", conf, builder.createTopology());
 			Thread.sleep(30000) ;
-      cluster.shutdown();
+			cluster.shutdown();
 		}
-  }
+	}
 }	
